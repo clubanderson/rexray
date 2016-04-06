@@ -28,18 +28,27 @@ deploy:
     user: $BINTRAY_USER
     key: $BINTRAY_KEY
     skip_cleanup: true
+    on:
+      all_branches: true
+      condition: $TRAVIS_TAG =~ ^$ && ($TRAVIS_REPO_SLUG = 'emccode/rexray' || $IGNORE_REPO_SLUG_CONDITION = true) && ($TRAVIS_BRANCH = master || $IGNORE_BRANCH_CONDITION = true)
 
   - provider: bintray
     file: .build/bintray-staged-filtered.json
     user: $BINTRAY_USER
     key: $BINTRAY_KEY
     skip_cleanup: true
+    on:
+      all_branches: true
+      condition: $TRAVIS_TAG =~ -rc[[:digit:]]+$ && ($TRAVIS_REPO_SLUG = 'emccode/rexray' || $IGNORE_REPO_SLUG_CONDITION = true)
 
   - provider: bintray
     file: .build/bintray-stable-filtered.json
     user: $BINTRAY_USER
     key: $BINTRAY_KEY
     skip_cleanup: true
+    on:
+      all_branches: true
+      condition: $TRAVIS_TAG =~ ^v?[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]$ && ($TRAVIS_REPO_SLUG = 'emccode/rexray' || $IGNORE_REPO_SLUG_CONDITION = true)
 
 cache:
   apt: true
