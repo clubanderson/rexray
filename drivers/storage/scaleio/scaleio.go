@@ -9,7 +9,7 @@ import (
 	"github.com/akutz/gofig"
 	"github.com/akutz/goof"
 
-	"github.com/emccode/goscaleio"
+	"github.com/clubanderson/goscaleio"
 	types "github.com/emccode/goscaleio/types/v1"
 
 	"github.com/emccode/rexray/core"
